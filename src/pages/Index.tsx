@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ProximityToggle } from '@/components/ProximityToggle';
 import { NearbyUsers } from '@/components/NearbyUsers';
 import { LocationTracker } from '@/components/LocationTracker';
+import { TestUsersButton } from '@/components/TestUsersButton';
 import { supabase } from '@/integrations/supabase/client';
 import { LogOut, Radar } from 'lucide-react';
 
@@ -54,9 +55,12 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">{user.email}</p>
             </div>
           </div>
-          <Button variant="ghost" size="icon" onClick={handleSignOut}>
-            <LogOut className="w-5 h-5" />
-          </Button>
+          <div className="flex items-center gap-2">
+            <TestUsersButton userLocation={userLocation} />
+            <Button variant="ghost" size="icon" onClick={handleSignOut}>
+              <LogOut className="w-5 h-5" />
+            </Button>
+          </div>
         </div>
 
         <ProximityToggle userId={user.id} />
